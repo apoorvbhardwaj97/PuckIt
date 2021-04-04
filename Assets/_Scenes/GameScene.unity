@@ -2518,6 +2518,7 @@ MonoBehaviour:
   botBar: {fileID: 476537480}
   bonusBar: {fileID: 826451939}
   uIView: {fileID: 195144755}
+  highScoreData: {fileID: 11400000, guid: 1ebef412aa6dbf14282f8f71d9852b24, type: 2}
 --- !u!1 &1839357853
 GameObject:
   m_ObjectHideFlags: 0

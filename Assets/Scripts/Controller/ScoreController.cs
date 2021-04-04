@@ -9,6 +9,7 @@ public class ScoreController : MonoBehaviour
     [SerializeField] private Transform botBar;
     [SerializeField] private Transform bonusBar;
     [SerializeField] private UIView uIView;
+    [SerializeField] private HighScoreData highScoreData;
     private float top;
     private float bot;
     private float bounusPos;
@@ -18,16 +19,7 @@ public class ScoreController : MonoBehaviour
     private int currentPuckScore = 0;
     private int totalScore = 0;
 
-    //public Function
-    public void AssignCurrentPuckView(PuckView view)
-    {
-        currentPuckView = view;
-        top = topBar.position.y;
-        bot = botBar.position.y;
-        bounusPos = bonusBar.position.y;
-        currentPuckPos = currentPuckView.transform.position.y;
-    }
-
+    //private functions
     private void Update()
     {
         if (currentPuckView != null)
@@ -44,9 +36,28 @@ public class ScoreController : MonoBehaviour
         }
     }
 
+    //public Function
+    public void AssignCurrentPuckView(PuckView view)
+    {
+        currentPuckView = view;
+        top = topBar.position.y;
+        bot = botBar.position.y;
+        bounusPos = bonusBar.position.y;
+        currentPuckPos = currentPuckView.transform.position.y;
+    }
+
     public void StoreCurrentPuckScore()
     {
         totalScore += currentPuckScore;
+        UpdateHighScore();
+    }
+
+    public void UpdateHighScore()
+    {
+        if (totalScore > highScoreData.highScore)
+        {
+            highScoreData.highScore = totalScore;
+        }
     }
 
     public float CalculateCurrentScore()

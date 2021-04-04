@@ -41,6 +41,7 @@ public class PuckSpawner : MonoBehaviour
         {
             Debug.Log("<color=red>No Pucks Left</color>");
             //game over
+            scoreController.UpdateHighScore();
         }
 
     }

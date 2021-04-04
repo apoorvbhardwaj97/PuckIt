@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 289355235}
   - component: {fileID: 289355234}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: HighScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1126,7 +1126,7 @@ GameObject:
   - component: {fileID: 1460628073}
   - component: {fileID: 1460628072}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: HighScoreLable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1338,6 +1338,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenesData: {fileID: 11400000, guid: 79d800ffbd5fbf146b37947455e673f1, type: 2}
+  highScoreText: {fileID: 289355234}
+  highScoreData: {fileID: 11400000, guid: 1ebef412aa6dbf14282f8f71d9852b24, type: 2}
 --- !u!1 &2111630711
 GameObject:
   m_ObjectHideFlags: 0
