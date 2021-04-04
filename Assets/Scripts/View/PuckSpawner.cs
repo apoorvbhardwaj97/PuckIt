@@ -61,7 +61,10 @@ public class PuckSpawner : MonoBehaviour
 
     public void CurrentPuckStoped()
     {
-        scoreController.StoreCurrentPuckScore();
+        if (currentPuckView.hitWall == false)
+        {
+            scoreController.StoreCurrentPuckScore();
+        }
         SpawnPuck();
     }
 }

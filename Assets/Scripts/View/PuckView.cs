@@ -25,8 +25,12 @@ public class PuckView : MonoBehaviour
     private Vector2 initialPosition;
     private bool puckStoped = false;
     private SpriteRenderer puckSprite;
+    [SerializeField] private float minForce;
     [SerializeField] private float forceMultiplier;
     [SerializeField] private float maxDistMultiplier;
+
+    //public varialbes
+    public bool hitWall = false;
 
     //private Functions
     private void Start()
@@ -65,15 +69,19 @@ public class PuckView : MonoBehaviour
             mouseDirection = mouseEndPos - mouseStartPos;
             PushPuck(mouseDirection, mouseDistance);
             mouseDown = false;
-            puckThrown = true;
-            canSwipe = false;
         }
     }
 
     private void PushPuck(Vector2 direction, float distMultiplier)
     {
         distMultiplier = Mathf.Min(distMultiplier, maxDistMultiplier);
-        this.GetComponent<Rigidbody2D>().AddForce(direction * distMultiplier * forceMultiplier, ForceMode2D.Impulse);
+        var force = direction * distMultiplier * forceMultiplier;
+        if (force.y > minForce)
+        {
+            canSwipe = false;
+            puckThrown = true;
+            this.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -81,6 +89,7 @@ public class PuckView : MonoBehaviour
         Debug.Log("Touched SOmething: " + other.gameObject.name);
         if (other.gameObject.tag == "Wall")
         {
+            hitWall = true;
             DestroyPuck();
             spawner.PuckDestroyed();
         }
@@ -99,6 +108,7 @@ public class PuckView : MonoBehaviour
 
     private void DestroyPuck()
     {
+        puckRb.velocity = Vector3.zero;
         SetPuckSate(PuckState.DESTROYED);
     }
 

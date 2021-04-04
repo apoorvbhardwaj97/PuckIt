@@ -96,8 +96,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 000754e3e561cbd429169b70e5e58b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minForce: 0.3
   forceMultiplier: 0.8
   maxDistMultiplier: 3
+  hitWall: 0
 --- !u!50 &7010771464623774393
 Rigidbody2D:
   serializedVersion: 4
