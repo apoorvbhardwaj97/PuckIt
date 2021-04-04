@@ -7,6 +7,7 @@ public class PuckSpawner : MonoBehaviour
     //private Variable
     [SerializeField] private GameObject puckPrefab;
     [SerializeField] private SpawnController spawnController;
+
     private PuckView currentPuckView;
 
     //public Variable
@@ -21,12 +22,12 @@ public class PuckSpawner : MonoBehaviour
         {
             currentPuckView = Instantiate(puckPrefab, transform).GetComponent<PuckView>();
             currentPuckView.AssignSpawner(this.GetComponent<PuckSpawner>());
+            spawnController.AssignCurrentPuckView(currentPuckView);
         }
         else
         {
             Debug.Log("<color=red>No Pucks Left</color>");
         }
-
     }
 
     public void PuckDestroyed()

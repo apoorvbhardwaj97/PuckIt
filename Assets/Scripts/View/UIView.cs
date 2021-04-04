@@ -7,6 +7,7 @@ public class UIView : MonoBehaviour
 {
     //private variables
     [SerializeField] private TextMeshProUGUI pucksLeftText;
+    [SerializeField] private TextMeshProUGUI scoreText;
     void Start()
     {
 
@@ -18,9 +19,14 @@ public class UIView : MonoBehaviour
     }
 
     //public functions
-    public void UpdateUI(int pucksLeft)
+    public void UpdatePuckLeftUI(int pucksLeft)
     {
         if (pucksLeft >= 0)
         { pucksLeftText.text = pucksLeft.ToString(); }
+    }
+
+    public void UpdateScoreUI(int score)
+    {
+        scoreText.text = score.ToString();
     }
 }
