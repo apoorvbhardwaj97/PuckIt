@@ -16,13 +16,21 @@ public class PuckSpawner : MonoBehaviour
         {
             Destroy(transform.GetChild(i).gameObject);
         }
-
-        currentPuckView = Instantiate(puckPrefab, transform).GetComponent<PuckView>();
-        currentPuckView.AssignSpawner(this.GetComponent<PuckSpawner>());
+        spawnController.DecrementPuckCount();
+        if (spawnController.CheckSpawn())
+        {
+            currentPuckView = Instantiate(puckPrefab, transform).GetComponent<PuckView>();
+            currentPuckView.AssignSpawner(this.GetComponent<PuckSpawner>());
+        }
+        else
+        {
+            Debug.Log("<color=red>No Pucks Left</color>");
+        }
 
     }
 
     public void PuckDestroyed()
     {
+        spawnController.PuckDestroyed();
     }
 }

@@ -7,13 +7,12 @@ public class SpawnController : MonoBehaviour
     //private variables
     [SerializeField] private PuckSpawner puckSpawnerView;
     [SerializeField] private UIView uIView;
-    [SerializeField] private int numberOfPucks;
+    [SerializeField] private int puckCount;
 
     //private functions
     private void Start()
     {
-        puckSpawnerView.SpawnPuck();
-        --numberOfPucks;
+        SpawnPuck();
         UpdateUI();
     }
 
@@ -24,8 +23,35 @@ public class SpawnController : MonoBehaviour
 
     private void UpdateUI()
     {
-        uIView.UpdateUI(numberOfPucks);
+        uIView.UpdateUI(puckCount);
+    }
+
+    private void SpawnPuck()
+    {
+        puckSpawnerView.SpawnPuck();
     }
 
     //public functions
+
+    public void PuckDestroyed()
+    {
+        UpdateUI();
+        SpawnPuck();
+    }
+
+    public void DecrementPuckCount()
+    {
+        puckCount--;
+        UpdateUI();
+    }
+
+    public void PuckStoped()
+    {
+        SpawnPuck();
+    }
+
+    public bool CheckSpawn()
+    {
+        return puckCount < 0 ? false : true;
+    }
 }

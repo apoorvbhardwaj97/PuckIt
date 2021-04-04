@@ -12,6 +12,8 @@ public class PuckView : MonoBehaviour
     private Vector2 mouseEndPos;
     private bool mouseDown;
     private bool canSwipe = true;
+    private Rigidbody2D puckRb;
+    private bool puckThrown = false;
     [SerializeField] private float forceMultiplier;
     [SerializeField] private float maxDistMultiplier;
 
@@ -19,11 +21,18 @@ public class PuckView : MonoBehaviour
     private void Start()
     {
         mouseDown = false;
+        puckRb = GetComponent<Rigidbody2D>();
+    }
+
+    private void FixedUpdate()
+    {
+        CalculateSwipe();
+        CheckPuckStopped();
     }
 
     private void LateUpdate()
     {
-        CalculateSwipe();
+
     }
 
     private void CalculateSwipe()
@@ -41,6 +50,7 @@ public class PuckView : MonoBehaviour
             mouseDirection = mouseEndPos - mouseStartPos;
             PushPuck(mouseDirection, mouseDistance);
             mouseDown = false;
+            puckThrown = true;
         }
     }
 
@@ -53,10 +63,23 @@ public class PuckView : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("Touched SOmething: " + other.gameObject.name);
         if (other.gameObject.tag == "Wall")
         {
             DestroyPuck();
         }
+    }
+
+    private void CheckPuckStopped()
+    {
+        if (puckThrown == true)
+        {
+            if (puckRb.velocity.sqrMagnitude < .01)
+            {
+                spawner.SpawnPuck();
+            }
+        }
+
     }
 
     private void DestroyPuck()

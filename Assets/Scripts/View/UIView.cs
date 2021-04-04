@@ -20,6 +20,7 @@ public class UIView : MonoBehaviour
     //public functions
     public void UpdateUI(int pucksLeft)
     {
-        pucksLeftText.text = pucksLeft.ToString();
+        if (pucksLeft >= 0)
+        { pucksLeftText.text = pucksLeft.ToString(); }
     }
 }
