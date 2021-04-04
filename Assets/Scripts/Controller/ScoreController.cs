@@ -35,7 +35,6 @@ public class ScoreController : MonoBehaviour
             if (CheckBonusZone())
             {
                 currentPuckScore = 100;
-                StoreCurrentPuckScore();
                 uIView.UpdateScoreUI(currentPuckScore, totalScore);
             }
             else

@@ -47,7 +47,7 @@ public class PuckView : MonoBehaviour
         {
             CalculateSwipe();
         }
-        if (!puckStoped && puckThrown == true)
+        if (!puckStoped && puckThrown && !hitWall)
         {
             CheckPuckStopped();
         }
@@ -91,7 +91,6 @@ public class PuckView : MonoBehaviour
         {
             hitWall = true;
             DestroyPuck();
-            spawner.PuckDestroyed();
         }
     }
 
@@ -110,6 +109,7 @@ public class PuckView : MonoBehaviour
     {
         puckRb.velocity = Vector3.zero;
         SetPuckSate(PuckState.DESTROYED);
+        spawner.PuckDestroyed();
     }
 
     //Public Functions

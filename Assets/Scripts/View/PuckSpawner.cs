@@ -29,13 +29,12 @@ public class PuckSpawner : MonoBehaviour
 
         if (!scoreController.CheckBonusZone())
         {
-            spawnController.DecrementPuckCount();
             currentPuckView.SetPuckSate(PuckState.INACTIVE);
-        }
-
-        if (spawnController.CheckSpawn())
-        {
-            InstantiatePuck();
+            if (spawnController.CheckSpawn())
+            {
+                spawnController.DecrementPuckCount();
+                InstantiatePuck();
+            }
         }
 
         else
@@ -43,6 +42,21 @@ public class PuckSpawner : MonoBehaviour
             Debug.Log("<color=red>No Pucks Left</color>");
             //game over
         }
+
+    }
+
+    public void TouchedWall()
+    {
+
+    }
+
+    public void BehindBonus()
+    {
+
+    }
+
+    public void InBonus()
+    {
 
     }
 
