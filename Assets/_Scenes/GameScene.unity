@@ -147,7 +147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 27221888}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.06, y: 4.53, z: 0}
+  m_LocalPosition: {x: 0.06, y: 4.6, z: 0}
   m_LocalScale: {x: 5.6247463, y: 0.14316499, z: 1}
   m_Children: []
   m_Father: {fileID: 1013896204}
@@ -665,7 +665,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pucksLeftText: {fileID: 1310943340}
-  scoreText: {fileID: 461214866}
+  currentScoreText: {fileID: 461214866}
+  totalScoreText: {fileID: 130408023}
 --- !u!1 &241443248
 GameObject:
   m_ObjectHideFlags: 0
@@ -1120,7 +1121,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 476537479}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.06, y: -3.55, z: 0}
+  m_LocalPosition: {x: 0.06, y: -3.4, z: 0}
   m_LocalScale: {x: 5.6247463, y: 0.14316499, z: 1}
   m_Children: []
   m_Father: {fileID: 1013896204}
@@ -1418,7 +1419,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 826451938}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.06, y: 1.88, z: 0}
+  m_LocalPosition: {x: 0.06, y: 3, z: 0}
   m_LocalScale: {x: 5.6247463, y: 0.14316499, z: 1}
   m_Children: []
   m_Father: {fileID: 1013896204}
@@ -1563,6 +1564,7 @@ MonoBehaviour:
   puckPrefab: {fileID: 7010771464623774386, guid: 2237641f6af2eee42896c98f0053b390,
     type: 3}
   spawnController: {fileID: 731178464}
+  scoreController: {fileID: 1827676711}
 --- !u!1 &1013896203
 GameObject:
   m_ObjectHideFlags: 0
@@ -2037,7 +2039,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1408024214
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2363,7 +2365,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -170, y: 110}
+  m_AnchoredPosition: {x: 0, y: 175.63}
   m_SizeDelta: {x: 209.88126, y: 65.629456}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1710751740

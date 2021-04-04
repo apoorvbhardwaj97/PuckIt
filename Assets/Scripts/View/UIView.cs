@@ -7,15 +7,12 @@ public class UIView : MonoBehaviour
 {
     //private variables
     [SerializeField] private TextMeshProUGUI pucksLeftText;
-    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI currentScoreText;
+    [SerializeField] private TextMeshProUGUI totalScoreText;
+
     void Start()
     {
-
-    }
-
-    void Update()
-    {
-
+        UpdateScoreUI(0, 0);
     }
 
     //public functions
@@ -25,8 +22,9 @@ public class UIView : MonoBehaviour
         { pucksLeftText.text = pucksLeft.ToString(); }
     }
 
-    public void UpdateScoreUI(int score)
+    public void UpdateScoreUI(int currentScore, int totalScore)
     {
-        scoreText.text = score.ToString();
+        currentScoreText.text = currentScore.ToString();
+        totalScoreText.text = totalScore.ToString();
     }
 }

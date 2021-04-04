@@ -13,7 +13,8 @@ public class SpawnController : MonoBehaviour
     //private functions
     private void Start()
     {
-        SpawnPuck();
+        puckSpawnerView.InstantiatePuck();
+        DecrementPuckCount();
         UpdateUI();
     }
 
