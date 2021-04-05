@@ -53,7 +53,15 @@ public class ScoreController : MonoBehaviour
 
     public void GameEnd()
     {
-        uIView.OpenEndGamePanel(UpdateHighScore());
+        var highScore = UpdateHighScore();
+        if (Getint("HighScore") <= totalScore)
+        {
+            uIView.OpenEndGamePanel(true);
+        }
+        else
+        {
+            uIView.OpenEndGamePanel(false);
+        }
     }
 
     public bool UpdateHighScore() //returns true if high score

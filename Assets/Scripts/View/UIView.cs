@@ -19,6 +19,7 @@ public class UIView : MonoBehaviour
     void Start()
     {
         UpdateScoreUI(0, 0);
+        ShowTutorial();
     }
 
     //public functions
