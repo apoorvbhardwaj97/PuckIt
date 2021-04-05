@@ -4861,7 +4861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minForce: 0.3
-  forceMultiplier: 0.6
+  forceMultiplier: 0.4
   maxDistMultiplier: 3
   hitWall: 0
 --- !u!50 &7010771464623774393
@@ -4877,7 +4877,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1.5
-  m_LinearDrag: 1.5
+  m_LinearDrag: 1.3
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 5e9d8a2799492d249a7cd56d61e71da5, type: 2}

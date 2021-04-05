@@ -14,7 +14,6 @@ public class PuckSpawner : MonoBehaviour
     //private functions
     private void SpawnBack()
     {
-        //change destory
         currentPuckView.gameObject.SetActive(false);
         InstantiatePuck();
     }
@@ -26,11 +25,12 @@ public class PuckSpawner : MonoBehaviour
         {
             if (spawnController.CheckSpawn())
             {
+                currentPuckView.SetPuckSate(PuckState.INACTIVE);
                 SpawnBack();
             }
         }
-
-        if (!scoreController.CheckBonusZone())
+        //changed if
+        else if (!scoreController.CheckBonusZone())
         {
             currentPuckView.SetPuckSate(PuckState.INACTIVE);
             if (spawnController.CheckSpawn())

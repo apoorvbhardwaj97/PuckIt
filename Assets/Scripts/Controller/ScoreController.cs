@@ -64,8 +64,11 @@ public class ScoreController : MonoBehaviour
             uIView.UpdateHighScore(Getint("HighScore"), totalScore);
             return true;
         }
-        uIView.UpdateHighScore(Getint("HighScore"), totalScore);
-        return false;
+        else
+        {
+            uIView.UpdateHighScore(Getint("HighScore"), totalScore);
+            return false;
+        }
     }
 
     public int Getint(string KeyName)
