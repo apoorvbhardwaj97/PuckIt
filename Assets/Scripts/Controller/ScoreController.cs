@@ -9,7 +9,6 @@ public class ScoreController : MonoBehaviour
     [SerializeField] private Transform botBar;
     [SerializeField] private Transform bonusBar;
     [SerializeField] private UIView uIView;
-    [SerializeField] private HighScoreData highScoreData;
     private float top;
     private float bot;
     private float bounusPos;
@@ -54,10 +53,20 @@ public class ScoreController : MonoBehaviour
 
     public void UpdateHighScore()
     {
-        if (totalScore > highScoreData.highScore)
+        if (totalScore > Getint("HighScore"))
         {
-            highScoreData.highScore = totalScore;
+            SetInt("HighScore", totalScore);
         }
+    }
+
+    public int Getint(string KeyName)
+    {
+        return PlayerPrefs.GetInt(KeyName);
+    }
+
+    public void SetInt(string KeyName, int Value)
+    {
+        PlayerPrefs.SetInt(KeyName, Value);
     }
 
     public float CalculateCurrentScore()

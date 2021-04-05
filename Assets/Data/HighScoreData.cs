@@ -6,4 +6,11 @@ using UnityEngine;
 public class HighScoreData : ScriptableObject
 {
     public int highScore;
+
+    public void SetHighScore(int score)
+    {
+        highScore = score;
+
+    }
+
 }

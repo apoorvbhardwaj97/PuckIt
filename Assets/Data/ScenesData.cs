@@ -4,4 +4,5 @@
 public class ScenesData : ScriptableObject
 {
     public string gameScene;
+    public string MenuScene;
 }

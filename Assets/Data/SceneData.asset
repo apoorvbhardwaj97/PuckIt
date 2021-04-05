@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: SceneData
   m_EditorClassIdentifier: 
   gameScene: GameScene
+  MenuScene: MenuScene
