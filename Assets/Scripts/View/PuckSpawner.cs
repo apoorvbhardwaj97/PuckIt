@@ -15,7 +15,7 @@ public class PuckSpawner : MonoBehaviour
     private void SpawnBack()
     {
         //change destory
-        Destroy(currentPuckView.gameObject);
+        currentPuckView.gameObject.SetActive(false);
         InstantiatePuck();
     }
 
@@ -24,7 +24,10 @@ public class PuckSpawner : MonoBehaviour
     {
         if (scoreController.CheckBonusZone())
         {
-            SpawnBack();
+            if (spawnController.CheckSpawn())
+            {
+                SpawnBack();
+            }
         }
 
         if (!scoreController.CheckBonusZone())
@@ -44,20 +47,10 @@ public class PuckSpawner : MonoBehaviour
             scoreController.UpdateHighScore();
         }
 
-    }
-
-    public void TouchedWall()
-    {
-
-    }
-
-    public void BehindBonus()
-    {
-
-    }
-
-    public void InBonus()
-    {
+        if (!spawnController.CheckSpawn())
+        {
+            scoreController.GameEnd();
+        }
 
     }
 

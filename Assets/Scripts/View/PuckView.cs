@@ -16,6 +16,8 @@ public class PuckView : MonoBehaviour
     private float mouseDistance;
     private Vector2 mouseDirection;
     private Vector2 mouseStartPos;
+    private float mouseStartTime;
+    private float mouseEndTime;
     private Vector2 mouseEndPos;
     private bool mouseDown;
     private bool canSwipe = true;
@@ -59,6 +61,7 @@ public class PuckView : MonoBehaviour
         {
             Debug.Log("mouseDown");
             mouseDown = true;
+            mouseStartTime = Time.realtimeSinceStartup;
             mouseStartPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
         if (Input.GetMouseButtonUp(0) && mouseDown == true)
@@ -67,15 +70,17 @@ public class PuckView : MonoBehaviour
             mouseEndPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mouseDistance = Vector2.Distance(mouseEndPos, mouseStartPos);
             mouseDirection = mouseEndPos - mouseStartPos;
-            PushPuck(mouseDirection, mouseDistance);
+            mouseEndTime = Time.realtimeSinceStartup;
+            var swipeTime = mouseEndTime - mouseStartTime;
+            PushPuck(mouseDirection, mouseDistance, swipeTime);
             mouseDown = false;
         }
     }
 
-    private void PushPuck(Vector2 direction, float distMultiplier)
+    private void PushPuck(Vector2 direction, float distMultiplier, float swipeTime)
     {
         distMultiplier = Mathf.Min(distMultiplier, maxDistMultiplier);
-        var force = direction * distMultiplier * forceMultiplier;
+        var force = direction * distMultiplier * forceMultiplier / swipeTime;
         if (force.y > minForce)
         {
             canSwipe = false;
@@ -126,17 +131,23 @@ public class PuckView : MonoBehaviour
             case PuckState.DESTROYED:
                 {
                     //diffrent sprite non swipable
-                    var destroyedPuckColor = Color.red;
-                    destroyedPuckColor.a = 30;
-                    puckSprite.color = destroyedPuckColor;
+                    if (puckSprite != null)
+                    {
+                        var destroyedPuckColor = Color.red;
+                        destroyedPuckColor.a = 30;
+                        puckSprite.color = destroyedPuckColor;
+                    }
                 }
                 break;
             case PuckState.INACTIVE:
                 {
                     //diffrent sprite non swipable
-                    var lightPuckColor = puckSprite.color;
-                    lightPuckColor.a -= 0.5f;
-                    puckSprite.color = lightPuckColor;
+                    if (puckSprite != null)
+                    {
+                        var lightPuckColor = puckSprite.color;
+                        lightPuckColor.a -= 0.5f;
+                        puckSprite.color = lightPuckColor;
+                    }
                 }
                 break;
         }

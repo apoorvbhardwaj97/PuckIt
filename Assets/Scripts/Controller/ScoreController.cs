@@ -51,12 +51,21 @@ public class ScoreController : MonoBehaviour
         UpdateHighScore();
     }
 
-    public void UpdateHighScore()
+    public void GameEnd()
+    {
+        uIView.OpenEndGamePanel(UpdateHighScore());
+    }
+
+    public bool UpdateHighScore() //returns true if high score
     {
         if (totalScore > Getint("HighScore"))
         {
             SetInt("HighScore", totalScore);
+            uIView.UpdateHighScore(Getint("HighScore"), totalScore);
+            return true;
         }
+        uIView.UpdateHighScore(Getint("HighScore"), totalScore);
+        return false;
     }
 
     public int Getint(string KeyName)
