@@ -21,12 +21,20 @@ public class PuckSpawner : MonoBehaviour
     //public Variable
     public void SpawnPuck()
     {
-        if (scoreController.CheckBonusZone())
+        if (scoreController.CheckBonusZone() && !currentPuckView.hitWall)
         {
             if (spawnController.CheckSpawn())
             {
                 currentPuckView.SetPuckSate(PuckState.INACTIVE);
                 SpawnBack();
+            }
+        }
+        else if (currentPuckView.hitWall)
+        {
+            if (spawnController.CheckSpawn())
+            {
+                InstantiatePuck();
+                spawnController.DecrementPuckCount();
             }
         }
         //changed if
