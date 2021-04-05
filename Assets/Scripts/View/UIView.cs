@@ -12,6 +12,7 @@ public class UIView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI endGameHighScore;
     [SerializeField] private TextMeshProUGUI endGameNoHs;
     [SerializeField] private TextMeshProUGUI endGameYourScore;
+    [SerializeField] private GameObject tutorialPanel;
     [SerializeField] private GameObject highScorePanel;
     [SerializeField] private GameObject noHighScorePanel;
 
@@ -52,5 +53,22 @@ public class UIView : MonoBehaviour
             highScorePanel.SetActive(false);
             noHighScorePanel.SetActive(true);
         }
+    }
+
+    public void ShowTutorial()
+    {
+        if (Getint("HighScore") > 0)
+        {
+            tutorialPanel.SetActive(false);
+        }
+        else
+        {
+            tutorialPanel.SetActive(true);
+        }
+    }
+
+    public int Getint(string KeyName)
+    {
+        return PlayerPrefs.GetInt(KeyName);
     }
 }
